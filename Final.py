@@ -40,14 +40,12 @@ def load_model(model_file):
 
 
 # Load your pre-saved models
-rf_model = load_model(r'/app/models/random_forest_model.pkl')
-xgb_model = load_model(r'/app/models/XGBoost.pkl')
-gb_model = load_model(r'/app/models/gradient_boosting.pkl')
-catboost_model = load_model(r'/app/models/cat_boost.pkl')
+gb_model = load_model(r'models/gradient_boosting.pkl')
+catboost_model = load_model(r'models/cat_boost.pkl')
 
 # Load the training data for preprocessing
 # Update with your dataset path
-data = pd.read_csv(r'/app/data/nndb_flat.csv')
+data = pd.read_csv(r'data/nndb_flat.csv')
 data_cleaned = data.drop(
     columns=['ID', 'ShortDescrip', 'Descrip', 'CommonName', 'MfgName'])
 df1 = pd.get_dummies(data_cleaned, columns=[
@@ -62,7 +60,7 @@ X_scaled = scaler.fit_transform(X)
 # Define each page as a function
 
 # Database setup
-conn = sqlite3.connect('/app/data/users.db', check_same_thread=False)
+conn = sqlite3.connect('data/users.db', check_same_thread=False)
 c = conn.cursor()
 
 # Create users table if it doesn't exist
@@ -151,7 +149,7 @@ def home():
     )
 
     # Image
-    st.image(r"/app/images/Wearble1.jpg", use_column_width=True)  # Update with your image path
+    st.image(r"images/Wearble1.jpg", use_column_width=True)  # Update with your image path
 
     # What We Offer Section
     st.header("What We Offer")
@@ -685,7 +683,7 @@ def about():
     st.title("About the Creator")
 
     # Add the image (make sure to replace the image path accordingly)
-    image = Image.open(r"/app/images/A_professional-looking_portrait_of_a_tech-savvy_cr.webp")
+    image = Image.open(r"images/A_professional-looking_portrait_of_a_tech-savvy_cr.webp")
     st.image(image, caption="The Creator behind NUTRIFLEX", use_column_width=True)
 
     # Write the About section
@@ -732,7 +730,7 @@ Stay connected to learn more about cutting-edge health tech and AI-driven wellne
  
 
 # Main App with Option Menu for Navigation
-st.sidebar.image(r"/app/images/NUTRIFLEX.jpg",
+st.sidebar.image(r"images/NUTRIFLEX.jpg",
                  use_column_width=True)  # Add your logo here
 
 def main():
