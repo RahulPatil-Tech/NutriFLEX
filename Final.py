@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
-import pickle
+import pickle5 as pickle
 from sklearn.ensemble import GradientBoostingClassifier 
 import matplotlib.pyplot as plt
 import numpy as np
